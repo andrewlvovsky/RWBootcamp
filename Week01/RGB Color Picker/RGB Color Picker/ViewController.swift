@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var redLabel : UILabel!
     @IBOutlet weak var greenLabel : UILabel!
     @IBOutlet weak var blueLabel : UILabel!
+    @IBOutlet weak var redValueLabel : UILabel!
+    @IBOutlet weak var greenValueLabel : UILabel!
+    @IBOutlet weak var blueValueLabel : UILabel!
     
     @IBOutlet weak var colorNameLabel : UILabel!
      
@@ -27,28 +30,29 @@ class ViewController: UIViewController {
     
     @IBAction func updateRedLabel() {
         let redLabelText = String(Int(redSlider.value.rounded()))
-        redLabel.text = redLabelText
+        redValueLabel.text = redLabelText
     }
     
     @IBAction func updateGreenLabel() {
         let greenLabelText = String(Int(greenSlider.value.rounded()))
-        greenLabel.text = greenLabelText
+        greenValueLabel.text = greenLabelText
     }
     
     @IBAction func updateBlueLabel() {
         let blueLabelText = String(Int(blueSlider.value.rounded()))
-        blueLabel.text = blueLabelText
+        blueValueLabel.text = blueLabelText
     }
 
     @IBAction func updateColor() {
-        //CGFloat = redSlider.value
         let redColor = CGFloat(redSlider.value.rounded()) / 255
         let greenColor = CGFloat(greenSlider.value.rounded())/255
         let blueColor = CGFloat(blueSlider.value.rounded()) / 255
         
-        print("Red is \(redColor)")
-        print("Green is \(greenColor)")
-        print("Blue is \(blueColor)")
+        //let reverseColor = UIColor.init(displayP3Red: abs(redColor - 255), green: abs(greenColor - 255), blue: abs(blueColor - 255), alpha: 1.0)
+    
+        // Changes label colors dynamically based on background color so that labels aren't hard to see
+        redColor < 0.5 && greenColor < 0.5 && blueColor < 0.5 ? changeTextColor(value: 1) : changeTextColor(value: 0)
+        
 
         let alert = UIAlertController(title: "Color", message: "Choose a name for your color.", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
@@ -71,13 +75,24 @@ class ViewController: UIViewController {
         greenSlider.value = 0
         blueSlider.value = 0
         
-        redLabel.text = "0"
-        greenLabel.text = "0"
-        blueLabel.text = "0"
+        redValueLabel.text = "0"
+        greenValueLabel.text = "0"
+        blueValueLabel.text = "0"
         
-        self.colorNameLabel.text = "White"
+        self.colorNameLabel.text = "Black"
+        
+        self.view.backgroundColor = UIColor.init(displayP3Red: 0, green: 0, blue: 0, alpha: 1.0)
     }
     
+    func changeTextColor(value: CGFloat) {
+        redLabel.textColor = UIColor.init(displayP3Red: value, green: value, blue: value, alpha: 1)
+        greenLabel.textColor = UIColor.init(displayP3Red: value, green: value, blue: value, alpha: 1)
+        blueLabel.textColor = UIColor.init(displayP3Red: value, green: value, blue: value, alpha: 1)
+        redValueLabel.textColor = UIColor.init(displayP3Red: value, green: value, blue: value, alpha: 1)
+        greenValueLabel.textColor = UIColor.init(displayP3Red: value, green: value, blue: value, alpha: 1)
+        blueValueLabel.textColor = UIColor.init(displayP3Red: value, green: value, blue: value, alpha: 1)
+        colorNameLabel.textColor = UIColor.init(displayP3Red: value, green: value, blue: value, alpha: 1)
+    }
 
 }
 
