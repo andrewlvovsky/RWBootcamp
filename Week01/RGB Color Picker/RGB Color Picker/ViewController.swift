@@ -128,7 +128,7 @@ class ViewController: UIViewController {
         resetButton.tintColor = newColor
         infoButton.tintColor = newColor
         
-        segController.tintColor = newColor
+        segController.backgroundColor = newColor
     }
     
     // func called by segmented control to determine color mode
