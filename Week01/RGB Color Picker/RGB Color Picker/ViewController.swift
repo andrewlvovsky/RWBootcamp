@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var setColorButton : UIButton!
     @IBOutlet weak var resetButton : UIButton!
     @IBOutlet weak var infoButton : UIButton!
+    
+    @IBOutlet weak var segController : UISegmentedControl!
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +50,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func updateColor() {
-        let redColor = CGFloat(redSlider.value.rounded()) / 255
-        let greenColor = CGFloat(greenSlider.value.rounded()) / 255
-        let blueColor = CGFloat(blueSlider.value.rounded()) / 255
+        let redColor, greenColor, blueColor : CGFloat
+        if (segController.selectedSegmentIndex == 0) {  // RGB
+            redColor = CGFloat(redSlider.value.rounded()) / 255
+            greenColor = CGFloat(greenSlider.value.rounded()) / 255
+            blueColor = CGFloat(blueSlider.value.rounded()) / 255
+        } else {    // HSB
+            redColor = CGFloat(redSlider.value.rounded()) / 360
+            greenColor = CGFloat(greenSlider.value.rounded()) / 100
+            blueColor = CGFloat(blueSlider.value.rounded()) / 100
+        }
         
         let reverseColor = UIColor.init(displayP3Red: abs(redColor - 1), green: abs(greenColor - 1), blue: abs(blueColor - 1), alpha: 1.0)
         
@@ -58,7 +67,7 @@ class ViewController: UIViewController {
             // If color is gray-ish, just set label color to white to avoid gray-on-gray color
             changeLabelColor(newColor: UIColor.init(displayP3Red: 1, green: 1, blue: 1, alpha: 1))   // basic white color
         } else {
-            // Changes label colors dynamically based on background color so that labels aren't hard to see
+            // Changes label colors dynamically based on background color so that labels aren't as hard to see
             changeLabelColor(newColor: reverseColor)
         }
 
@@ -78,7 +87,11 @@ class ViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
         
-        self.view.backgroundColor = UIColor.init(displayP3Red: redColor, green: greenColor, blue: blueColor, alpha: 1.0)
+        if (segController.selectedSegmentIndex == 0) {
+            self.view.backgroundColor = UIColor.init(red: redColor, green: greenColor, blue: blueColor, alpha: 1.0)
+        } else {
+            self.view.backgroundColor = UIColor.init(hue: redColor, saturation: greenColor, brightness: blueColor, alpha: 1.0)
+        }
         
     }
     
@@ -108,7 +121,40 @@ class ViewController: UIViewController {
         setColorButton.tintColor = newColor
         resetButton.tintColor = newColor
         infoButton.tintColor = newColor
+        
+        segController.tintColor = newColor
+    }
+    
+    @IBAction func modeChanged(_ sender: Any) {
+        if (segController.selectedSegmentIndex == 0) {
+            changeToRGB()
+        } else if (segController.selectedSegmentIndex == 1){
+            changeToHSB()
+        } else {
+            print("Error: Out-of-bounds index on segment controller")
+        }
+    }
+    
+    func changeToRGB() {
+        redLabel.text = "Red"
+        greenLabel.text = "Green"
+        blueLabel.text = "Blue"
+        redSlider.maximumValue = 255
+        greenSlider.maximumValue = 255
+        blueSlider.maximumValue = 255
+        
+        resetColor()
     }
 
+    func changeToHSB() {
+        redLabel.text = "Hue"
+        greenLabel.text = "Saturation"
+        blueLabel.text = "Brightness"
+        redSlider.maximumValue = 360
+        greenSlider.maximumValue = 100
+        blueSlider.maximumValue = 100
+        
+        resetColor()
+    }
 }
 
