@@ -118,6 +118,8 @@
                         <outlet property="redLabel" destination="kQp-9g-YiR" id="mTq-3A-1on"/>
                         <outlet property="redSlider" destination="1bu-c5-hqg" id="bZo-Rp-elR"/>
                         <outlet property="redValueLabel" destination="fTL-fM-1Ks" id="C76-44-9AS"/>
+                        <outlet property="resetButton" destination="Axe-4c-z26" id="jHF-dr-rMa"/>
+                        <outlet property="setColorButton" destination="Pf2-EU-uz0" id="b8U-BL-UrN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
