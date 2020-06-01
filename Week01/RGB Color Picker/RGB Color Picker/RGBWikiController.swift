@@ -24,9 +24,11 @@ class RGBWikiController: UIViewController {
 //        let myRequest = URLRequest(url: myURL!)
 //        webView.load(myRequest)
         
-        let url = URL(string: "https://en.wikipedia.org/wiki/RGB_color_model")
-        let request = URLRequest(url: url!)
-        webView.load(request)
+        
+        if let url = URL(string: "https://en.wikipedia.org/wiki/RGB_color_model") {
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
     }
     
     @IBAction func close() {
