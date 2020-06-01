@@ -66,7 +66,11 @@ class ViewController: UIViewController {
         
         let action = UIAlertAction(title: "OK", style: .default, handler: {
             action in
-            self.colorNameLabel.text = alert.textFields![0].text!
+            if (alert.textFields![0].text != "") {
+                self.colorNameLabel.text = alert.textFields![0].text!
+            } else {
+                self.colorNameLabel.text = "No Color Name Specified"
+            }
         })
         
         alert.addAction(action)
