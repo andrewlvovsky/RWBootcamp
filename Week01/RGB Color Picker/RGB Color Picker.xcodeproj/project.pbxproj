@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		438A07B22485638E00163380 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438A07B12485638E00163380 /* WebKit.framework */; };
 		43A0F3AE2480DBD20036E4CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A0F3AD2480DBD20036E4CE /* AppDelegate.swift */; };
 		43A0F3B02480DBD20036E4CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A0F3AF2480DBD20036E4CE /* SceneDelegate.swift */; };
 		43A0F3B22480DBD20036E4CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A0F3B12480DBD20036E4CE /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		438A07B12485638E00163380 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		43A0F3AA2480DBD20036E4CE /* RGB Color Picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RGB Color Picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A0F3AD2480DBD20036E4CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43A0F3AF2480DBD20036E4CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +35,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438A07B22485638E00163380 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		438A07B02485638E00163380 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438A07B12485638E00163380 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		43A0F3A12480DBD20036E4CE = {
 			isa = PBXGroup;
 			children = (
 				43A0F3AC2480DBD20036E4CE /* RGB Color Picker */,
 				43A0F3AB2480DBD20036E4CE /* Products */,
+				438A07B02485638E00163380 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
