@@ -31,9 +31,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        resetColor()
+        resetColor()    // sets color to black (0,0,0) on start
     }
     
+    // The three following action funcs update the value of the respective slider and display it
     @IBAction func updateRedLabel() {
         let redLabelText = String(Int(redSlider.value.rounded()))
         redValueLabel.text = redLabelText
@@ -49,6 +50,7 @@ class ViewController: UIViewController {
         blueValueLabel.text = blueLabelText
     }
 
+    // falls in when "Set Color" is hit
     @IBAction func updateColor() {
         let redColor, greenColor, blueColor : CGFloat
         if (segController.selectedSegmentIndex == 0) {  // RGB
@@ -61,6 +63,7 @@ class ViewController: UIViewController {
             blueColor = CGFloat(blueSlider.value.rounded()) / 100
         }
         
+        // this color is the "opposite" of the selected color so labels don't blend into the color
         let reverseColor = UIColor.init(displayP3Red: abs(redColor - 1), green: abs(greenColor - 1), blue: abs(blueColor - 1), alpha: 1.0)
         
         if ((redColor > 0.4 && redColor < 0.6) && (greenColor > 0.4 && greenColor < 0.6) && (blueColor > 0.4 && blueColor < 0.6)) {
@@ -87,6 +90,7 @@ class ViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
         
+        // Sets color based on color mode
         if (segController.selectedSegmentIndex == 0) {
             self.view.backgroundColor = UIColor.init(red: redColor, green: greenColor, blue: blueColor, alpha: 1.0)
         } else {
@@ -95,6 +99,7 @@ class ViewController: UIViewController {
         
     }
     
+    // resets color to black when called (called on start and when "Reset" button is pressed)
     @IBAction func resetColor() {
         redSlider.value = 0
         greenSlider.value = 0
@@ -109,6 +114,7 @@ class ViewController: UIViewController {
         changeLabelColor(newColor: UIColor.init(displayP3Red: 1, green: 1, blue: 1, alpha: 1.0))
     }
     
+    // helper function for changing color of labels
     func changeLabelColor(newColor: UIColor) {
         redLabel.textColor = newColor
         greenLabel.textColor = newColor
@@ -125,6 +131,7 @@ class ViewController: UIViewController {
         segController.tintColor = newColor
     }
     
+    // func called by segmented control to determine color mode
     @IBAction func modeChanged(_ sender: Any) {
         if (segController.selectedSegmentIndex == 0) {
             changeToRGB()
@@ -135,6 +142,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // helper function for setting RGB environment
     func changeToRGB() {
         redLabel.text = "Red"
         greenLabel.text = "Green"
@@ -146,6 +154,7 @@ class ViewController: UIViewController {
         resetColor()
     }
 
+    // helper function for setting HSB environment
     func changeToHSB() {
         redLabel.text = "Hue"
         greenLabel.text = "Saturation"

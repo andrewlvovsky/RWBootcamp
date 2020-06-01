@@ -16,15 +16,6 @@ class RGBWikiController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let url = URL(string: "https://en.wikipedia.org/wiki/RGB_color_model") {
-//            UIApplication.shared.open(url)
-//        }
-        
-//        let myURL = URL(string:"https://www.apple.com")
-//        let myRequest = URLRequest(url: myURL!)
-//        webView.load(myRequest)
-        
-        
         if let url = URL(string: "https://en.wikipedia.org/wiki/RGB_color_model") {
             let request = URLRequest(url: url)
             webView.load(request)
