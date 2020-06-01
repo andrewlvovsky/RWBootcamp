@@ -13,6 +13,7 @@
 		43A0F3B52480DBD20036E4CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A0F3B32480DBD20036E4CE /* Main.storyboard */; };
 		43A0F3B72480DBD30036E4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A0F3B62480DBD30036E4CE /* Assets.xcassets */; };
 		43A0F3BA2480DBD30036E4CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43A0F3B82480DBD30036E4CE /* LaunchScreen.storyboard */; };
+		43C6582A2484C6B3002039AB /* RGBWikiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C658292484C6B3002039AB /* RGBWikiController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		43A0F3B62480DBD30036E4CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43A0F3B92480DBD30036E4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43A0F3BB2480DBD30036E4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43C658292484C6B3002039AB /* RGBWikiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBWikiController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				43A0F3AF2480DBD20036E4CE /* SceneDelegate.swift */,
 				43A0F3B12480DBD20036E4CE /* ViewController.swift */,
 				43A0F3B32480DBD20036E4CE /* Main.storyboard */,
+				43C658292484C6B3002039AB /* RGBWikiController.swift */,
 				43A0F3B62480DBD30036E4CE /* Assets.xcassets */,
 				43A0F3B82480DBD30036E4CE /* LaunchScreen.storyboard */,
 				43A0F3BB2480DBD30036E4CE /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43A0F3B22480DBD20036E4CE /* ViewController.swift in Sources */,
+				43C6582A2484C6B3002039AB /* RGBWikiController.swift in Sources */,
 				43A0F3AE2480DBD20036E4CE /* AppDelegate.swift in Sources */,
 				43A0F3B02480DBD20036E4CE /* SceneDelegate.swift in Sources */,
 			);

@@ -103,6 +103,14 @@
                                     <action selector="updateBlueLabel" destination="BYZ-38-t0r" eventType="valueChanged" id="TFB-Gd-rL5"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thp-HO-iKt">
+                                <rect key="frame" x="20" y="838" width="25" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                <connections>
+                                    <segue destination="n0D-4S-cdC" kind="presentation" id="WyR-ja-txT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -115,6 +123,7 @@
                         <outlet property="greenLabel" destination="9rt-pl-921" id="J4O-bg-byL"/>
                         <outlet property="greenSlider" destination="uLh-0o-NbC" id="bSE-LF-qxe"/>
                         <outlet property="greenValueLabel" destination="341-of-5a4" id="IPX-If-exK"/>
+                        <outlet property="infoButton" destination="thp-HO-iKt" id="vgi-vQ-i04"/>
                         <outlet property="redLabel" destination="kQp-9g-YiR" id="mTq-3A-1on"/>
                         <outlet property="redSlider" destination="1bu-c5-hqg" id="bZo-Rp-elR"/>
                         <outlet property="redValueLabel" destination="fTL-fM-1Ks" id="C76-44-9AS"/>
@@ -125,6 +134,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+        <!--Wiki Controller-->
+        <scene sceneID="8sn-hu-i3Z">
+            <objects>
+                <viewController id="n0D-4S-cdC" customClass="RGBWikiController" customModule="RGB_Color_Picker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I0i-KO-Ton">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m3d-RL-qFm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="770"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-3B-HX0">
+                                <rect key="frame" x="178" y="778" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Go Back"/>
+                                <connections>
+                                    <action selector="close" destination="n0D-4S-cdC" eventType="touchUpInside" id="Pdz-67-9lv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="S10-YD-aYZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="m3d-RL-qFm" id="BDW-cw-vPk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3te-lv-8s0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931.88405797101461" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

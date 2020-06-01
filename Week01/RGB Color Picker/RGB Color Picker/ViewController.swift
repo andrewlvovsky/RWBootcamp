@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var setColorButton : UIButton!
     @IBOutlet weak var resetButton : UIButton!
+    @IBOutlet weak var infoButton : UIButton!
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
 
     @IBAction func updateColor() {
         let redColor = CGFloat(redSlider.value.rounded()) / 255
-        let greenColor = CGFloat(greenSlider.value.rounded())/255
+        let greenColor = CGFloat(greenSlider.value.rounded()) / 255
         let blueColor = CGFloat(blueSlider.value.rounded()) / 255
         
         let reverseColor = UIColor.init(displayP3Red: abs(redColor - 1), green: abs(greenColor - 1), blue: abs(blueColor - 1), alpha: 1.0)
@@ -106,6 +107,7 @@ class ViewController: UIViewController {
         
         setColorButton.tintColor = newColor
         resetButton.tintColor = newColor
+        infoButton.tintColor = newColor
     }
 
 }
