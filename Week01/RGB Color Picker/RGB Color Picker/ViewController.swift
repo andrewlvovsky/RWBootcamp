@@ -76,6 +76,7 @@ class ViewController: UIViewController {
 
         let alert = UIAlertController(title: "Color", message: "Choose a name for your color.", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
+        alert.textFields![0].autocapitalizationType = .sentences
         
         let action = UIAlertAction(title: "OK", style: .default, handler: {
             action in
