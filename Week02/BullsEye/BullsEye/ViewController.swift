@@ -10,10 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  //  var currentValue = 0
-  //  var targetValue = 0
-  //  var score = 0
-  //  var round = 0
   var game = BullsEyeGame(currentValue: 0, targetValue: 0, score: 0, round: 0)
 
   @IBOutlet weak var slider: UISlider!
@@ -24,8 +20,9 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     let roundedValue = slider.value.rounded()
+
     game.currentValue = Int(roundedValue)
-    game.startNewGame()
+    startNewGameFromModel()
   }
 
   @IBAction func showAlert() {
@@ -55,7 +52,7 @@ class ViewController: UIViewController {
     roundLabel.text = String(game.round)
   }
 
-  @IBAction func startNewGame() {
+  @IBAction func startNewGameFromModel() {
     game.startNewGame()
     updateView()
   }
