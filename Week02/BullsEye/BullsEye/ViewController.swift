@@ -15,10 +15,12 @@ class ViewController: UIViewController {
   //  var score = 0
   //  var round = 0
   var game = BullsEyeGame(currentValue: 0, targetValue: 0, score: 0, round: 0)
+
   @IBOutlet weak var slider: UISlider!
   @IBOutlet weak var targetLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!
   @IBOutlet weak var roundLabel: UILabel!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     let roundedValue = slider.value.rounded()
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
   @IBAction func showAlert() {
     let title, message: String
     (title, message) = game.calculateScore()
+
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
       self.game.startNewRound()
@@ -54,6 +57,7 @@ class ViewController: UIViewController {
 
   @IBAction func startNewGame() {
     game.startNewGame()
+    updateView()
   }
 
 }
