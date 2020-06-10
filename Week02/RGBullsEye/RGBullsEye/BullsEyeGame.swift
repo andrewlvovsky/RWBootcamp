@@ -36,22 +36,19 @@ class BullsEyeGame {  // might be class?
   }
 
   func calculateScore() -> (String, String) {
-    print("Current: \(currentValue.r) \(currentValue.g) \(currentValue.b)")
-    print("Target: \(targetValue.r) \(targetValue.g) \(targetValue.b)")
     let difference = Int(currentValue.difference(target: targetValue) * 255)
-    print(difference)
     var points = 255 - difference
 
     let title: String
     if difference == 0 {
       title = "Perfect!"
       points += 1000
-    } else if difference < 5 {
+    } else if difference < 50 {
       title = "You almost had it!"
-      if difference == 1 {
+      if difference <= 10 {
         points += 500
       }
-    } else if difference < 10 {
+    } else if difference < 100 {
       title = "Pretty good!"
     } else {
       title = "Not even close..."

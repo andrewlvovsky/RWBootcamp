@@ -40,6 +40,11 @@ class ViewController: UIViewController {
 
   let game = BullsEyeGame(currentValue: RGB(), targetValue: RGB(), score: 0, round: 0)
   var rgb = RGB()
+
+  var quickDiff: Int {
+    return Int(game.currentValue.difference(target: game.targetValue)*255)
+  }
+
   
   @IBAction func aSliderMoved(sender: UISlider) {
     rgb.r = Int(redSlider.value.rounded())
@@ -48,6 +53,10 @@ class ViewController: UIViewController {
     game.currentValue = rgb
 
     updateView()
+
+    redSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+    greenSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+    blueSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
   }
   
   @IBAction func showAlert(sender: AnyObject) {
@@ -78,9 +87,15 @@ class ViewController: UIViewController {
     greenLabel.text = String("G \(game.currentValue.g)")
     blueLabel.text = String("B \(game.currentValue.b)")
 
+    guessLabel.backgroundColor = UIColor(rgbStruct: game.currentValue)
     targetLabel.backgroundColor = UIColor(rgbStruct: game.targetValue)
+
     scoreLabel.text = String(game.score)
     roundLabel.text = String(game.round)
+
+    redSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+    greenSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+    blueSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
   }
   
   override func viewDidLoad() {
@@ -92,6 +107,10 @@ class ViewController: UIViewController {
 
     game.currentValue = rgb
     startOver()
+
+    redSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+    greenSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
+    blueSlider.minimumTrackTintColor = UIColor.blue.withAlphaComponent(CGFloat(quickDiff)/100.0)
   }
 }
 
