@@ -22,6 +22,59 @@
 
 import Foundation
 
-struct BullsEyeGame {  // might be class?
+class BullsEyeGame {  // might be class?
+  var currentValue: RGB
+  var targetValue: RGB
+  var score: Int
+  var round: Int
 
+  init(currentValue: RGB, targetValue: RGB, score: Int, round: Int) {
+    self.currentValue = currentValue
+    self.targetValue = targetValue
+    self.score = score
+    self.round = round
+  }
+
+  func calculateScore() -> (String, String) {
+    print("Current: \(currentValue.r) \(currentValue.g) \(currentValue.b)")
+    print("Target: \(targetValue.r) \(targetValue.g) \(targetValue.b)")
+    let difference = Int(currentValue.difference(target: targetValue) * 255)
+    print(difference)
+    var points = 255 - difference
+
+    let title: String
+    if difference == 0 {
+      title = "Perfect!"
+      points += 1000
+    } else if difference < 5 {
+      title = "You almost had it!"
+      if difference == 1 {
+        points += 500
+      }
+    } else if difference < 10 {
+      title = "Pretty good!"
+    } else {
+      title = "Not even close..."
+    }
+
+    score += points
+
+    let message = "You scored \(points) points"
+
+    return (title, message)
+  }
+
+  func startNewRound() {
+    round += 1
+    currentValue = RGB()
+    targetValue.r = Int.random(in: 1...255)
+    targetValue.g = Int.random(in: 1...255)
+    targetValue.b = Int.random(in: 1...255)
+  }
+
+  func startNewGame() {
+    score = 0
+    round = 0
+    startNewRound()
+  }
 }

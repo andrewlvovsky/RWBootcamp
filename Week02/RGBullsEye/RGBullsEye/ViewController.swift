@@ -38,29 +38,60 @@ class ViewController: UIViewController {
   @IBOutlet weak var roundLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!
 
-  
-  
-  let game = BullsEyeGame()
+  let game = BullsEyeGame(currentValue: RGB(), targetValue: RGB(), score: 0, round: 0)
   var rgb = RGB()
   
   @IBAction func aSliderMoved(sender: UISlider) {
+    rgb.r = Int(redSlider.value.rounded())
+    rgb.g = Int(greenSlider.value.rounded())
+    rgb.b = Int(blueSlider.value.rounded())
+    game.currentValue = rgb
 
+    updateView()
   }
   
   @IBAction func showAlert(sender: AnyObject) {
+    let title, message: String
+    (title, message) = game.calculateScore()
 
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK", style: .default, handler: { _ in
+      self.game.startNewRound()
+      self.updateView()
+    })
+    alert.addAction(action)
+
+    present(alert, animated: true, completion: nil)
   }
   
-  @IBAction func startOver(sender: AnyObject) {
-
+  @IBAction func startOver() {
+    game.startNewGame()
+    updateView()
   }
   
   func updateView() {
+    redSlider.value = Float(game.currentValue.r)
+    greenSlider.value = Float(game.currentValue.g)
+    blueSlider.value = Float(game.currentValue.b)
 
+    redLabel.text = String("R \(game.currentValue.r)")
+    greenLabel.text = String("G \(game.currentValue.g)")
+    blueLabel.text = String("B \(game.currentValue.b)")
+
+    targetLabel.backgroundColor = UIColor(rgbStruct: game.targetValue)
+    scoreLabel.text = String(game.score)
+    roundLabel.text = String(game.round)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    rgb.r = Int(redSlider.value.rounded())
+    rgb.g = Int(greenSlider.value.rounded())
+    rgb.b = Int(blueSlider.value.rounded())
+
+    game.currentValue = rgb
+    startOver()
   }
 }
 
