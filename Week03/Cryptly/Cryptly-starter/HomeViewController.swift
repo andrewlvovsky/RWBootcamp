@@ -42,7 +42,9 @@ class HomeViewController: UIViewController{
   @IBOutlet weak var view2TextLabel: UILabel!
   @IBOutlet weak var view3TextLabel: UILabel!
   @IBOutlet weak var themeSwitch: UISwitch!
-    
+
+  let cryptoData = DataGenerator.shared.generateData()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setupViews()
@@ -50,6 +52,7 @@ class HomeViewController: UIViewController{
     setView1Data()
     setView2Data()
     setView3Data()
+    print(cryptoData!)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +64,7 @@ class HomeViewController: UIViewController{
   }
 
   func setupViews() {
-      
+
     view1.backgroundColor = .systemGray6
     view1.layer.borderColor = UIColor.lightGray.cgColor
     view1.layer.borderWidth = 1.0
@@ -94,12 +97,43 @@ class HomeViewController: UIViewController{
   }
   
   func setView1Data() {
+    var cryptoNames = cryptoData?.reduce("", { (concatenatedCryptoNames, crypto) in
+      concatenatedCryptoNames + crypto.name + ", "
+    })
+
+    removeLastComma(from: &cryptoNames)
+
+    view1TextLabel.text = cryptoNames
   }
   
   func setView2Data() {
+    var increasedCryptoNames = cryptoData?.filter({ (crypto) -> Bool in
+      crypto.currentValue > crypto.previousValue
+    }).reduce("", { (concatenatedCryptoNames, crypto) in
+      concatenatedCryptoNames + crypto.name + ", "
+    })
+
+    removeLastComma(from: &increasedCryptoNames)
+
+    view2TextLabel.text = increasedCryptoNames
   }
   
   func setView3Data() {
+    var decreasedCryptoNames = cryptoData?.filter({ (crypto) -> Bool in
+      crypto.currentValue < crypto.previousValue
+    }).reduce("", { (concatenatedCryptoNames, crypto) in
+      concatenatedCryptoNames + crypto.name + ", "
+    })
+
+    removeLastComma(from: &decreasedCryptoNames)
+
+    view3TextLabel.text = decreasedCryptoNames
+  }
+
+  func removeLastComma(from stringWithComma: inout String?) {
+    if let i = stringWithComma?.lastIndex(of: ",") {
+      stringWithComma?.remove(at: i)
+    }
   }
   
   @IBAction func switchPressed(_ sender: Any) {
