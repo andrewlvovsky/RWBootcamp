@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     if let person = currentPerson {
       questionLabel.text = "Person \(String(person.id)), what do you think about..."
       compatibilityItemLabel.text = compatibilityItems[currentItemIndex]
-      slider.value = 3
+      slider.value = 2.5
     }
   }
 
