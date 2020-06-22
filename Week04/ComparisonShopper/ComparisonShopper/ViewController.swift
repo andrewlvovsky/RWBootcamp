@@ -10,87 +10,104 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    // Left
-    @IBOutlet weak var titleLabelLeft: UILabel!
-    @IBOutlet weak var imageViewLeft: UIImageView!
-    @IBOutlet weak var priceLabelLeft: UILabel!
-    @IBOutlet weak var roomLabelLeft: UILabel!
+  // Left
+  @IBOutlet weak var titleLabelLeft: UILabel!
+  @IBOutlet weak var imageViewLeft: UIImageView!
+  @IBOutlet weak var priceLabelLeft: UILabel!
+  @IBOutlet weak var roomLabelLeft: UILabel!
 
-    // Right
-    @IBOutlet weak var titleLabelRight: UILabel!
-    @IBOutlet weak var imageViewRight: UIImageView!
-    @IBOutlet weak var priceLabelRight: UILabel!
-    @IBOutlet weak var roomLabelRight: UILabel!
+  // Right
+  @IBOutlet weak var titleLabelRight: UILabel!
+  @IBOutlet weak var imageViewRight: UIImageView!
+  @IBOutlet weak var priceLabelRight: UILabel!
+  @IBOutlet weak var roomLabelRight: UILabel!
 
-    var house1: House?
-    var house2: House?
+  var house1: House?
+  var house2: House?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpLeftSideUI()
-        setUpRightSideUI()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        house1?.price = "$12,000"
-        house1?.bedrooms = "3 bedrooms"
+    // added house1 instance before setting up left view
+    house1 = House()
+    house1?.address = "1234 Main St."
+    house1?.price = "$12,000"
+    house1?.bedrooms = "3 bedrooms"
+
+    // added alpha on/off based on house optional value
+    setUpLeftSideUI()
+    setUpRightSideUI()
+  }
+
+  func setUpLeftSideUI() {
+    // no need to add nil check here since we are now
+    // guaranteed that house1 will be set to an instance
+    titleLabelLeft.alpha = 1
+    imageViewLeft.alpha = 1
+    priceLabelLeft.alpha = 1
+    roomLabelLeft.alpha = 1
+
+    titleLabelLeft.text = house1!.address!
+    priceLabelLeft.text = house1!.price!
+    roomLabelLeft.text = house1!.bedrooms!
+  }
+
+  func setUpRightSideUI() {
+    if house2 == nil {
+      titleLabelRight.alpha = 0
+      imageViewRight.alpha = 0
+      priceLabelRight.alpha = 0
+      roomLabelRight.alpha = 0
+    } else {
+      titleLabelRight.alpha = 1
+      imageViewRight.alpha = 1
+      priceLabelRight.alpha = 1
+      roomLabelRight.alpha = 1
+
+      titleLabelRight.text! = house2!.address!
+      priceLabelRight.text! = house2!.price!
+      roomLabelRight.text! = house2!.bedrooms!
+    }
+  }
+
+  @IBAction func didPressAddRightHouseButton(_ sender: Any) {
+    openAlertView()
+  }
+
+  func openAlertView() {
+    let alert = UIAlertController(title: "Alert Title", message: "Alert Message", preferredStyle: UIAlertController.Style.alert)
+
+    alert.addTextField { (textField) in
+      textField.placeholder = "address"
     }
 
-    func setUpLeftSideUI() {
-        titleLabelLeft.text = house1!.address!
-        priceLabelLeft.text = house1!.price!
-        roomLabelLeft.text = house1!.bedrooms!
+    alert.addTextField { (textField) in
+      textField.placeholder = "price"
     }
 
-    func setUpRightSideUI() {
-        if house2 == nil {
-            titleLabelRight.alpha = 0
-            imageViewRight.alpha = 0
-            priceLabelRight.alpha = 0
-            roomLabelRight.alpha = 0
-        } else {
-            titleLabelRight.text! = house2!.address!
-            priceLabelRight.text! = house2!.price!
-            roomLabelRight.text! = house2!.bedrooms!
-        }
+    alert.addTextField { (textField) in
+      textField.placeholder = "bedrooms"
     }
 
-    @IBAction func didPressAddRightHouseButton(_ sender: Any) {
-        openAlertView()
-    }
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:nil))
 
-    func openAlertView() {
-        let alert = UIAlertController(title: "Alert Title", message: "Alert Message", preferredStyle: UIAlertController.Style.alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:{ (UIAlertAction) in
+      var house = House()
+      house.address = alert.textFields?[0].text
+      house.price = alert.textFields?[1].text
+      house.bedrooms = alert.textFields?[2].text
+      self.house2 = house
+      self.setUpRightSideUI()
+    }))
 
-        alert.addTextField { (textField) in
-            textField.placeholder = "address"
-        }
-
-        alert.addTextField { (textField) in
-            textField.placeholder = "price"
-        }
-
-        alert.addTextField { (textField) in
-            textField.placeholder = "bedrooms"
-        }
-
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:nil))
-
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:{ (UIAlertAction) in
-            var house = House()
-            house.address = alert.textFields?[0].text
-            house.price = alert.textFields?[1].text
-            house.bedrooms = alert.textFields?[2].text
-            self.house2 = house
-            self.setUpRightSideUI()
-        }))
-
-        self.present(alert, animated: true, completion: nil)
-    }
+    self.present(alert, animated: true, completion: nil)
+  }
 
 }
 
 struct House {
-    var address: String?
-    var price: String?
-    var bedrooms: String?
+  var address: String?
+  var price: String?
+  var bedrooms: String?
 }
 
