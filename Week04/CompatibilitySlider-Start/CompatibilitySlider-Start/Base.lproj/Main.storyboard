@@ -54,40 +54,48 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wvX-Aj-i8c" userLabel="Scale and Slider">
-                                <rect key="frame" x="45" y="413" width="324" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wvX-Aj-i8c" userLabel="Scale and Slider">
+                                <rect key="frame" x="20" y="413" width="374" height="70"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="4AL-Tr-BCs" userLabel="Scale">
-                                        <rect key="frame" x="22" y="0.0" width="280" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4AL-Tr-BCs" userLabel="Scale">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="terrible" translatesAutoresizingMaskIntoConstraints="NO" id="MHE-4j-X35">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="58.666666666666664" height="30"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bad" translatesAutoresizingMaskIntoConstraints="NO" id="Oso-n0-SLr">
-                                                <rect key="frame" x="65" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="78.666666666666671" y="0.0" width="59.000000000000014" height="30"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meh" translatesAutoresizingMaskIntoConstraints="NO" id="y6k-Xb-g0a">
-                                                <rect key="frame" x="130" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="157.66666666666666" y="0.0" width="58.666666666666657" height="30"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="good" translatesAutoresizingMaskIntoConstraints="NO" id="UDX-5m-69w">
-                                                <rect key="frame" x="195" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="236.33333333333331" y="0.0" width="59" height="30"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="great" translatesAutoresizingMaskIntoConstraints="NO" id="5XL-nc-oMm">
-                                                <rect key="frame" x="260" y="0.0" width="20" height="30"/>
+                                                <rect key="frame" x="315.33333333333331" y="0.0" width="58.666666666666686" height="30"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qva-iw-efA">
-                                        <rect key="frame" x="-2" y="40" width="328" height="31"/>
+                                        <rect key="frame" x="-2" y="40" width="378" height="31"/>
                                         <connections>
                                             <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OJB-PN-gwH"/>
                                         </connections>
                                     </slider>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4AL-Tr-BCs" secondAttribute="trailing" id="4I2-9z-OmK"/>
+                                    <constraint firstItem="4AL-Tr-BCs" firstAttribute="leading" secondItem="wvX-Aj-i8c" secondAttribute="leading" id="Ej6-b1-tcT"/>
+                                    <constraint firstItem="Qva-iw-efA" firstAttribute="leading" secondItem="wvX-Aj-i8c" secondAttribute="leading" id="J4y-Nw-NWa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qva-iw-efA" secondAttribute="trailing" id="q6z-TF-se6"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="wvX-Aj-i8c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8e1-0L-0lM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wvX-Aj-i8c" secondAttribute="trailing" constant="20" id="Ggn-Iq-zWc"/>
                             <constraint firstItem="MVH-S2-yW5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="N8d-Ox-R1A"/>
                             <constraint firstItem="d1w-P6-8nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VMa-bx-263"/>
                             <constraint firstItem="wvX-Aj-i8c" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YG5-np-bif"/>
