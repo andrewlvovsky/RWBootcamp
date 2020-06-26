@@ -44,9 +44,9 @@ class ViewController: UIViewController {
   }
 
   @IBAction func didPressNextItemButton(_ sender: Any) {
+    addItemToPerson()
+
     if currentItemIndex < compatibilityItems.count - 1 {
-      let currentItem = compatibilityItems[currentItemIndex]
-      currentPerson?.items.updateValue(slider.value, forKey: currentItem)
       currentItemIndex += 1
     } else if currentPerson == person2 {
       let score = calculateCompatibility()
@@ -55,7 +55,13 @@ class ViewController: UIViewController {
       currentPerson = currentPerson == person1 ? person2 : person1
       currentItemIndex = 0
     }
+
     updateLabels()
+  }
+
+  func addItemToPerson() {
+    let currentItem = compatibilityItems[currentItemIndex]
+    currentPerson?.items.updateValue(slider.value, forKey: currentItem)
   }
 
   func updateLabels() {
