@@ -10,15 +10,21 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  @IBOutlet weak var username: UILabel!
+  @IBOutlet weak var timestamp: UILabel!
+  @IBOutlet weak var body: UILabel!
+  @IBOutlet weak var postImage: UIImageView!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+  }
 
-        // Configure the view for the selected state
-    }
-    
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+
+    // Configure the view for the selected state
+  }
+
 }

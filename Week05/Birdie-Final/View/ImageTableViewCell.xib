@@ -48,6 +48,13 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="body" destination="GoU-EF-xe7" id="26e-wn-TMf"/>
+                <outlet property="image" destination="IfF-AA-wub" id="LLA-dz-IY3"/>
+                <outlet property="postImage" destination="IfF-AA-wub" id="y2P-gm-Ho0"/>
+                <outlet property="timestamp" destination="zba-9v-7Zd" id="J1k-i2-Qqo"/>
+                <outlet property="username" destination="oZs-F9-b8q" id="Zj2-Le-V1K"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </tableViewCell>
     </objects>
