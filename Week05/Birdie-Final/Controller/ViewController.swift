@@ -19,7 +19,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
   func setUpTableView() {
     // Set delegates, register custom cells, set up datasource, etc.
-    tableview.delegate = self
+    //tableview.delegate = self
+    tableview.register(UINib(nibName: "TextTableViewCell", bundle: nil), forCellReuseIdentifier: "TextPostCellView")
+    tableview.register(UINib(nibName: "ImageTableViewCell", bundle: nil), forCellReuseIdentifier: "ImagePostCellView")
     tableview.dataSource = self
     MediaPostsHandler.shared.getPosts()
   }
@@ -39,29 +41,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let post = MediaPostsHandler.shared.mediaPosts[indexPath.row]
     let cell: UITableViewCell
     if post is TextPost {
-      cell = tableView.dequeueReusableCell(withIdentifier: "TextPost", for: indexPath)
+      cell = tableView.dequeueReusableCell(withIdentifier: "TextPostCellView", for: indexPath)
       configureText(for: cell, with: post as! TextPost)
     } else {
-      cell = tableView.dequeueReusableCell(withIdentifier: "ImagePost", for: indexPath)
-      configureImage(for: cell, with: post as! ImagePost)
+      cell = tableView.dequeueReusableCell(withIdentifier: "ImagePostCellView", for: indexPath)
+      configureImage(for: cell as! ImageTableViewCell, with: post as! ImagePost)
     }
     return cell
   }
 
   func configureText(for cell: UITableViewCell, with post: TextPost) {
-    let textCell = cell as? TextTableViewCell
-    textCell?.username.text = post.userName
-    textCell?.timestamp.text = post.timestamp.description
-    textCell?.body.text = post.textBody
+    if let textCell = cell as? TextTableViewCell {
+      textCell.username.text = post.userName
+      textCell.timestamp.text = post.timestamp.description
+      textCell.body.text = post.textBody
+    }
   }
 
-  func configureImage(for cell: UITableViewCell, with post: ImagePost) {
-    if let imageCell = cell as? ImageTableViewCell {
-      imageCell.username.text = post.userName
-      imageCell.timestamp.text = post.timestamp.description
-      imageCell.body.text = post.textBody
-      imageCell.postImage = UIImageView(image: post.image)
-    }
+  func configureImage(for cell: ImageTableViewCell, with post: ImagePost) {
+    cell.username.text = post.userName
+    cell.timestamp.text = post.timestamp.description
+    cell.body.text = post.textBody
+    cell.postImage.image = post.image
   }
 
 }
