@@ -27,7 +27,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
 
   @IBAction func didPressCreateTextPostButton(_ sender: Any) {
-    print("stop here for a sec")
+    let alert = UIAlertController(title: "Add Post", message: "Post anything!", preferredStyle: .alert)
+    alert.addTextField(configurationHandler: nil)
+    alert.addTextField(configurationHandler: nil)
+    alert.textFields![0].autocapitalizationType = .sentences
+    alert.textFields![1].autocapitalizationType = .sentences
+    let action = UIAlertAction(title: "OK", style: .default, handler: {
+      action in
+      let newRowIndex = MediaPostsHandler.shared.mediaPosts.count
+      let newTextPost = TextPost(textBody: alert.textFields![1].text!, userName: alert.textFields![0].text!, timestamp: Date())
+      MediaPostsHandler.shared.addTextPost(textPost: newTextPost)
+      let indexPath = IndexPath(row: newRowIndex, section: 0)
+      let indexPaths = [indexPath]
+      self.tableview.insertRows(at: indexPaths, with: .automatic)
+      self.tableview.reloadData()
+    })
+
+    alert.addAction(action)
+
+    present(alert, animated: true, completion: nil)
   }
 
   @IBAction func didPressCreateImagePostButton(_ sender: Any) {
@@ -54,16 +72,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func configureText(for cell: UITableViewCell, with post: TextPost) {
     if let textCell = cell as? TextTableViewCell {
       textCell.username.text = post.userName
-      textCell.timestamp.text = post.timestamp.description
+      textCell.timestamp.text = returnDateAsString(for: post.timestamp)
       textCell.body.text = post.textBody
     }
   }
 
   func configureImage(for cell: ImageTableViewCell, with post: ImagePost) {
     cell.username.text = post.userName
-    cell.timestamp.text = post.timestamp.description
+    cell.timestamp.text = returnDateAsString(for: post.timestamp)
     cell.body.text = post.textBody
     cell.postImage.image = post.image
+  }
+
+  func returnDateAsString(for date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "en_US")
+    dateFormatter.setLocalizedDateFormatFromTemplate("dd MMM'T'HH:mm")
+    return dateFormatter.string(from: date)
   }
 
 }
