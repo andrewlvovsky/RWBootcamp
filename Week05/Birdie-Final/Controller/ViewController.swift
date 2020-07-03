@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
 
   @IBAction func didPressCreateTextPostButton(_ sender: Any) {
+    print("stop here for a sec")
   }
 
   @IBAction func didPressCreateImagePostButton(_ sender: Any) {
