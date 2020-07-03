@@ -27,11 +27,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
 
   @IBAction func didPressCreateTextPostButton(_ sender: Any) {
-    let alert = UIAlertController(title: "Add Post", message: "Post anything!", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Add Post", message: nil, preferredStyle: .alert)
     alert.addTextField(configurationHandler: nil)
     alert.addTextField(configurationHandler: nil)
     alert.textFields![0].autocapitalizationType = .sentences
+    alert.textFields![0].placeholder = "Username"
     alert.textFields![1].autocapitalizationType = .sentences
+    alert.textFields![1].placeholder = "Message"
     let action = UIAlertAction(title: "OK", style: .default, handler: {
       action in
       let newRowIndex = MediaPostsHandler.shared.mediaPosts.count
