@@ -55,6 +55,6 @@ class CompactCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayou
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: interItemSpacing / 2, left: 0, bottom: interItemSpacing / 2, right: 0)
+    return UIEdgeInsets(top: interItemSpacing / 2, left: interItemSpacing / 2, bottom: interItemSpacing / 2, right: interItemSpacing / 2)
   }
 }

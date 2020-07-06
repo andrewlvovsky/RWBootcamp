@@ -37,7 +37,7 @@ class CompactViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
 
   let dataSource = DataSource()
-  let delegate = CompactCollectionViewDelegate(numberOfItemsPerRow: 3, interItemSpacing: 5)
+  let delegate = CompactCollectionViewDelegate(numberOfItemsPerRow: 3, interItemSpacing: 15)
 
   override func viewDidLoad() {
     super.viewDidLoad()
