@@ -43,7 +43,7 @@ class CompactViewController: UIViewController {
     super.viewDidLoad()
     collectionView.dataSource = dataSource
     collectionView.delegate = delegate
-    collectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
+    collectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CompactPokemonCell")
   }
 
 

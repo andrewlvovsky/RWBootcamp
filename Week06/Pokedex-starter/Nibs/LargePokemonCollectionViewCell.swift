@@ -32,28 +32,11 @@
 
 import UIKit
 
-class DataSource: NSObject, UICollectionViewDataSource {
+class LargePokemonCollectionViewCell: UICollectionViewCell {
 
-  let pokemons = PokemonGenerator.shared.generatePokemons()
-
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return pokemons.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-    guard let pokemonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCell", for: indexPath) as? PokemonCollectionViewCell else {
-      fatalError("Cell cannot be created")
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
-
-    let pokemon = self.pokemons[indexPath.item]
-
-    pokemonCell.name.text = pokemon.pokemonName
-    pokemonCell.image.image = UIImage(named: String(pokemon.pokemonID))
-
-    return pokemonCell
-
-  }
-
 
 }
