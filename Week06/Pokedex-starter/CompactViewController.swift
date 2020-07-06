@@ -30,13 +30,31 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-struct Pokemon {
-  var pokemonID: Int
-  var pokemonName: String
-  var baseExp: Int
-  var weight: Int
-  var height: Int
+class CompactViewController: UIViewController {
+
+  @IBOutlet weak var collectionView: UICollectionView!
+
+  let dataSource = DataSource()
+  let delegate = CompactCollectionViewDelegate(numberOfItemsPerRow: 3, interItemSpacing: 5)
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    collectionView.dataSource = dataSource
+    collectionView.delegate = delegate
+    collectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
+  }
+
+
+  /*
+   // MARK: - Navigation
+
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destination.
+   // Pass the selected object to the new view controller.
+   }
+   */
+
 }
-

@@ -64,6 +64,11 @@
                 <constraint firstItem="ivr-0p-rzf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="y1b-no-ggf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="image" destination="hVO-l5-lJh" id="n9n-La-Vvs"/>
+                <outlet property="label" destination="frK-cP-wWk" id="VhL-H2-Mi0"/>
+                <outlet property="name" destination="frK-cP-wWk" id="zxd-ZD-9ta"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </collectionViewCell>
     </objects>

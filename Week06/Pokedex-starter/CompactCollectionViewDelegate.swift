@@ -30,13 +30,31 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-struct Pokemon {
-  var pokemonID: Int
-  var pokemonName: String
-  var baseExp: Int
-  var weight: Int
-  var height: Int
+class CompactCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+
+  let numberOfItemsPerRow: CGFloat
+  let interItemSpacing: CGFloat
+
+  init(numberOfItemsPerRow: CGFloat, interItemSpacing: CGFloat) {
+    self.numberOfItemsPerRow = numberOfItemsPerRow
+    self.interItemSpacing = interItemSpacing
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let maxWidth = UIScreen.main.bounds.width
+    let totalSpacing = interItemSpacing * numberOfItemsPerRow
+
+    let itemWidth = (maxWidth - totalSpacing) / numberOfItemsPerRow
+    return CGSize(width: itemWidth, height: itemWidth)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return interItemSpacing
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: interItemSpacing / 2, left: 0, bottom: interItemSpacing / 2, right: 0)
+  }
 }
-
