@@ -82,7 +82,11 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="D2P-cY-MzA" firstAttribute="centerY" secondItem="9Ye-Kk-I2y" secondAttribute="centerY" id="GPr-jL-Jp3"/>
+                                    <constraint firstItem="521-jx-55r" firstAttribute="centerY" secondItem="bTZ-Lg-wVw" secondAttribute="centerY" id="ZA6-WF-Byr"/>
+                                    <constraint firstItem="VA5-cy-yr3" firstAttribute="centerY" secondItem="MYk-MW-5aN" secondAttribute="centerY" id="aPH-9s-Sx6"/>
                                     <constraint firstItem="4hu-1M-WWX" firstAttribute="leading" secondItem="M5l-Ee-eED" secondAttribute="leading" constant="131.5" id="baJ-PW-v1s"/>
+                                    <constraint firstItem="4hu-1M-WWX" firstAttribute="leading" secondItem="dNf-8w-W2P" secondAttribute="trailing" id="qfr-xB-7c7"/>
                                 </constraints>
                             </stackView>
                         </subviews>
