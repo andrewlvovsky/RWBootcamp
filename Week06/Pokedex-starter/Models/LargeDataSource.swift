@@ -32,29 +32,32 @@
 
 import UIKit
 
-class LargeCollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+class LargeDataSource: NSObject, UICollectionViewDataSource {
 
-  let numberOfItemsPerRow: CGFloat
-  let interItemSpacing: CGFloat
+  let pokemons = PokemonGenerator.shared.generatePokemons()
 
-  init(numberOfItemsPerRow: CGFloat, interItemSpacing: CGFloat) {
-    self.numberOfItemsPerRow = numberOfItemsPerRow
-    self.interItemSpacing = interItemSpacing
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return pokemons.count
   }
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let maxWidth = UIScreen.main.bounds.width
-    let totalSpacing = interItemSpacing * numberOfItemsPerRow
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-    let itemWidth = (maxWidth - totalSpacing) / numberOfItemsPerRow
-    return CGSize(width: itemWidth / 2, height: itemWidth)
+    guard let pokemonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LargePokemonCell", for: indexPath) as? LargePokemonCollectionViewCell else {
+      fatalError("Cell cannot be created")
+    }
+
+    let pokemon = self.pokemons[indexPath.item]
+
+    pokemonCell.name.text = pokemon.pokemonName
+    pokemonCell.image.image = UIImage(named: String(pokemon.pokemonID))
+    pokemonCell.baseExp.text = String(pokemon.baseExp)
+    pokemonCell.height.text = String(pokemon.height)
+    pokemonCell.weight.text = String(pokemon.weight)
+
+
+    return pokemonCell
+
   }
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return interItemSpacing
-  }
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: interItemSpacing / 2, left: interItemSpacing / 2, bottom: interItemSpacing / 2, right: interItemSpacing / 2)
-  }
 }

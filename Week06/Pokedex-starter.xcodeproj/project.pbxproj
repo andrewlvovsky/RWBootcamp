@@ -12,6 +12,7 @@
 		185CB1FE23C78CE6009F7571 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CB1FD23C78CE6009F7571 /* SceneDelegate.swift */; };
 		185CB20323C78CE6009F7571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185CB20123C78CE6009F7571 /* Main.storyboard */; };
 		185CB20523C78CE8009F7571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185CB20423C78CE8009F7571 /* Assets.xcassets */; };
+		431B9F6224B3F34F00FBB7EC /* LargeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431B9F6124B3F34F00FBB7EC /* LargeDataSource.swift */; };
 		438D43C824B3AB57002C514A /* CompactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438D43C724B3AB57002C514A /* CompactViewController.swift */; };
 		438D43CA24B3ACFB002C514A /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438D43C924B3ACFB002C514A /* DataSource.swift */; };
 		438D43CC24B3AE04002C514A /* CompactCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438D43CB24B3AE04002C514A /* CompactCollectionViewDelegate.swift */; };
@@ -37,6 +38,7 @@
 		185CB20223C78CE6009F7571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		185CB20423C78CE8009F7571 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		185CB20923C78CE8009F7571 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		431B9F6124B3F34F00FBB7EC /* LargeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeDataSource.swift; sourceTree = "<group>"; };
 		438D43C724B3AB57002C514A /* CompactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactViewController.swift; sourceTree = "<group>"; };
 		438D43C924B3ACFB002C514A /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		438D43CB24B3AE04002C514A /* CompactCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactCollectionViewDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				438D43C924B3ACFB002C514A /* DataSource.swift */,
+				431B9F6124B3F34F00FBB7EC /* LargeDataSource.swift */,
 				A10D04F824ABC8DB00DE5D14 /* Pokemon.swift */,
 			);
 			path = Models;
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				438D43CC24B3AE04002C514A /* CompactCollectionViewDelegate.swift in Sources */,
+				431B9F6224B3F34F00FBB7EC /* LargeDataSource.swift in Sources */,
 				438D43C824B3AB57002C514A /* CompactViewController.swift in Sources */,
 				A10D04F924ABC8DB00DE5D14 /* Pokemon.swift in Sources */,
 				A125200B24AAAB71008F7E2E /* csv.swift in Sources */,
@@ -404,12 +408,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4V74C49Z2;
 				INFOPLIST_FILE = "Pokedex-starter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.raywenderlich.Pokedex-starter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andrewlvovsky.Pokedex-starter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -421,12 +426,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4V74C49Z2;
 				INFOPLIST_FILE = "Pokedex-starter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.raywenderlich.Pokedex-starter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andrewlvovsky.Pokedex-starter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

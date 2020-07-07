@@ -33,10 +33,17 @@
 import UIKit
 
 class LargePokemonCollectionViewCell: UICollectionViewCell {
+  static let reuseIdentifier = String(describing: PokemonCollectionViewCell.self)
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  @IBOutlet weak var image: UIImageView!
+  @IBOutlet weak var name: UILabel!
+  @IBOutlet weak var baseExp: UILabel!
+  @IBOutlet weak var height: UILabel!
+  @IBOutlet weak var weight: UILabel!
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+  }
 
 }

@@ -33,16 +33,17 @@
 import UIKit
 
 class LargeViewController: UIViewController {
+
   @IBOutlet weak var collectionView: UICollectionView!
 
-  let dataSource = DataSource()
-  //let delegate = LargeCollection
+  let dataSource = LargeDataSource()
+  let delegate = LargeCollectionViewDelegate(numberOfItemsPerRow: 1, interItemSpacing: 5)
 
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.dataSource = dataSource
     collectionView.delegate = delegate
-    collectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LargePokemonCell")
+    collectionView.register(UINib(nibName: "LargePokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LargePokemonCell")
   }
 
 }
