@@ -14,6 +14,7 @@ protocol SandwichDataSource {
 
 class SandwichViewController: UITableViewController, SandwichDataSource {
   let searchController = UISearchController(searchResultsController: nil)
+  let defaults = UserDefaults.standard
   var sandwiches = [SandwichData]()
   var filteredSandwiches = [SandwichData]()
 
@@ -124,8 +125,16 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
 extension SandwichViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
-    let sauceAmount = SauceAmount(rawValue:
-      searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+
+    let sauceAmountRawValue = defaults.object(forKey: "Sauce Type") as? String ?? String()
+
+    let sauceAmount: SauceAmount?
+    if sauceAmountRawValue.isEmpty {
+      sauceAmount = SauceAmount(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+    } else {
+      sauceAmount = SauceAmount(rawValue: sauceAmountRawValue)
+      searchBar.selectedScopeButtonIndex = determineCurrentScopeButtonIndex(for: sauceAmount)
+    }
 
     filterContentForSearchText(searchBar.text!, sauceAmount: sauceAmount)
   }
@@ -137,7 +146,23 @@ extension SandwichViewController: UISearchBarDelegate {
       selectedScopeButtonIndexDidChange selectedScope: Int) {
     let sauceAmount = SauceAmount(rawValue:
       searchBar.scopeButtonTitles![selectedScope])
+
+    defaults.set(sauceAmount?.rawValue, forKey: "Sauce Type")
+
     filterContentForSearchText(searchBar.text!, sauceAmount: sauceAmount)
+  }
+}
+
+// MARK: - Helper Functions
+
+func determineCurrentScopeButtonIndex(for sauceAmount: SauceAmount?) -> Int {
+  switch(sauceAmount) {
+  case .any:
+    return 0
+  case .tooMuch:
+    return 2
+  default:
+    return 1
   }
 }
 
