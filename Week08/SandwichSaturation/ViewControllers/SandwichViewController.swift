@@ -22,6 +22,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   var sandwiches = [Sandwich]()
   var filteredSandwiches = [Sandwich]()
   var query = ""
+  var dontRefreshTable = true
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
@@ -31,6 +32,8 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     } else {
       refresh()
     }
+    
+    dontRefreshTable = false
   }
   
   override func viewDidLoad() {
@@ -64,28 +67,16 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     do {
       let sandwichesData = try Data(contentsOf: sandwichesJSONURL)
       let sandwichArray = try decoder.decode([SandwichData].self, from: sandwichesData)
-      saveSandwiches(from: sandwichArray)
+      for newSandwich in sandwichArray {
+        saveSandwich(newSandwich)
+      }
+      //tableView.reloadData()
+      print(sandwiches)
     } catch let error {
       print(error)
     }
   }
 
-  func loadSandwichesFromCoreData() {
-
-  }
-
-  func saveSandwiches(from sandwichArray: [SandwichData]) {
-    for newSandwich in sandwichArray {
-      let sandwich = Sandwich(entity: Sandwich.entity(), insertInto: context)
-      sandwich.name = newSandwich.name
-      sandwich.imageName = newSandwich.imageName
-      sandwich.sauce = SauceAmountModel(entity: SauceAmountModel.entity(), insertInto: context)
-      sandwich.sauce?.amount = newSandwich.sauceAmount.rawValue
-
-      appDelegate.saveContext()
-      refresh()
-    }
-  }
 
   func refresh() {
     let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
@@ -97,6 +88,9 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     do {
       fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: #keyPath(Sandwich.name), cacheName: nil)
       try fetchedRC.performFetch()
+      if let objs = fetchedRC.fetchedObjects {
+        sandwiches = objs
+      }
     } catch let error as NSError {
       print("Could not fetch. \(error), \(error.userInfo)")
     }
@@ -109,11 +103,13 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     sandwichData.imageName = sandwich.imageName
     sandwichData.sauce = SauceAmountModel(entity: SauceAmountModel.entity(), insertInto: context)
     sandwichData.sauce?.amount = sandwich.sauceAmount.rawValue
+    sandwiches.append(sandwichData)
 
     appDelegate.saveContext()
     refresh()
-//    sandwiches.append(sandwichData)
-    tableView.reloadData()
+    if(!dontRefreshTable) {
+      tableView.reloadData()
+    }
   }
 
   @objc
@@ -151,30 +147,43 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   // MARK: - Table View
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return fetchedRC.sections?.count ?? 0
+    //    return fetchedRC.sections?.count ?? 0
+    return 1
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let sections = fetchedRC.sections, let objs = sections[section].objects else {
-      return 0
-    }
-    return objs.count
+    //    guard let sections = fetchedRC.sections, let objs = sections[section].objects else {
+    //      return 0
+    //    }
+    //    return objs.count
+    return isFiltering ? filteredSandwiches.count : sandwiches.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "sandwichCell", for: indexPath) as? SandwichCell
       else { return UITableViewCell() }
-    //
-    //    let sandwich = isFiltering ?
-    //      filteredSandwiches[indexPath.row] :
-    //      sandwiches[indexPath.row]
-    let sandwich = fetchedRC.object(at: indexPath)
+
+    let sandwich = isFiltering ?
+      filteredSandwiches[indexPath.row] :
+      sandwiches[indexPath.row]
+    //let sandwich = fetchedRC.object(at: indexPath)
 
     cell.thumbnail.image = UIImage.init(imageLiteralResourceName: sandwich.imageName!)
     cell.nameLabel.text = sandwich.name
     cell.sauceLabel.text = sandwich.sauce?.amount
 
     return cell
+  }
+
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      let sandwich = sandwiches[indexPath.row]
+      sandwiches.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      context.delete(sandwich)
+      appDelegate.saveContext()
+      refresh()
+    }
   }
 }
 
