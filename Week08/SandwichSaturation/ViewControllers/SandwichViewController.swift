@@ -32,7 +32,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     } else {
       refresh()
     }
-    
+
     dontRefreshTable = false
   }
   
@@ -70,8 +70,6 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
       for newSandwich in sandwichArray {
         saveSandwich(newSandwich)
       }
-      //tableView.reloadData()
-      print(sandwiches)
     } catch let error {
       print(error)
     }
@@ -80,9 +78,6 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
 
   func refresh() {
     let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
-    if !query.isEmpty {
-      request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", query)
-    }
     let sort = NSSortDescriptor(key: #keyPath(Sandwich.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
     request.sortDescriptors = [sort]
     do {
@@ -124,17 +119,44 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   func filterContentForSearchText(_ searchText: String,
                                   sauceAmount: SauceAmount? = nil) {
-    filteredSandwiches = sandwiches.filter { (sandwhich: Sandwich) -> Bool in
-      let doesSauceAmountMatch = sauceAmount == .any /*|| sandwhich.sauce == sauceAmount*/
+        filteredSandwiches = sandwiches.filter { (sandwhich: Sandwich) -> Bool in
+          let doesSauceAmountMatch = sauceAmount == .any || sandwhich.sauce?.amount! == sauceAmount?.rawValue
 
-      if isSearchBarEmpty {
-        return doesSauceAmountMatch
-      } else {
-        return doesSauceAmountMatch && sandwhich.name!.lowercased()
-          .contains(searchText.lowercased())
-      }
-    }
-    
+          if isSearchBarEmpty {
+            return doesSauceAmountMatch
+          } else {
+            return doesSauceAmountMatch && sandwhich.name!.lowercased()
+              .contains(searchText.lowercased())
+          }
+        }
+
+//    let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
+//
+//    if (!searchText.isEmpty) {
+//      let scopePredicate: NSPredicate
+//      if (sauceAmount == .any) {
+//        scopePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
+//          NSPredicate(format: "sauce.amount == Too Much", searchText),
+//          NSPredicate(format: "sauce.amount == None", searchText)
+//        ])
+//      } else {
+//        scopePredicate = NSPredicate(format: "sauce.amount == \(sauceAmount!)", searchText)
+//      }
+//      request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+//        scopePredicate,
+//        NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+//      ])
+//    }
+//
+//    let sort = NSSortDescriptor(key: #keyPath(Sandwich.name), ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+//    request.sortDescriptors = [sort]
+//    do {
+//      fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: #keyPath(Sandwich.name), cacheName: nil)
+//      try fetchedRC.performFetch()
+//    } catch let error as NSError {
+//      print("Could not fetch. \(error), \(error.userInfo)")
+//    }
+
     tableView.reloadData()
   }
   
