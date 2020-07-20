@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol SandwichDataSource {
-  func saveSandwich(_: Sandwich)
+  func saveSandwich(_: SandwichData)
 }
 
 class SandwichViewController: UITableViewController, SandwichDataSource {
@@ -103,8 +103,16 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   }
 
 
-  func saveSandwich(_ sandwich: Sandwich) {
-    sandwiches.append(sandwich)
+  func saveSandwich(_ sandwich: SandwichData) {
+    let sandwichData = Sandwich(entity: Sandwich.entity(), insertInto: context)
+    sandwichData.name = sandwich.name
+    sandwichData.imageName = sandwich.imageName
+    sandwichData.sauce = SauceAmountModel(entity: SauceAmountModel.entity(), insertInto: context)
+    sandwichData.sauce?.amount = sandwich.sauceAmount.rawValue
+
+    appDelegate.saveContext()
+    refresh()
+//    sandwiches.append(sandwichData)
     tableView.reloadData()
   }
 
