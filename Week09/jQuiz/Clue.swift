@@ -20,7 +20,6 @@ struct Clue: Decodable {
   var game_id: Int?
   var invalid_count: Int?
   var category: Category
-//  let dict: [Dictionary<String, Any>]
 }
 
 struct Category: Decodable {

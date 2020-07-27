@@ -13,7 +13,15 @@ class SoundManager: NSObject {
 
   static let shared = SoundManager()
 
-  private var player: AVAudioPlayer?
+  private var players: [AVAudioPlayer]
+
+  override init() {
+    players = []
+    for _ in 0..<3 {
+      self.players.append(AVAudioPlayer())
+    }
+    super.init()
+  }
 
   var isSoundEnabled: Bool? {
     get {
@@ -27,34 +35,32 @@ class SoundManager: NSObject {
     }
   }
 
-  func playSound() {
-    guard let url = Bundle.main.url(forResource: "Jeopardy-theme-song", withExtension: "mp3") else { return }
-
+  func playSound(of url: URL, on index: Int) {
     do {
-      try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-      try AVAudioSession.sharedInstance().setActive(true)
-      player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+      players[index] = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
     } catch let error {
       print(error.localizedDescription)
     }
 
-    if let player = player,
-      let isSoundEnabled = isSoundEnabled {
+    if let isSoundEnabled = isSoundEnabled {
       if isSoundEnabled {
-        player.play()
-        player.numberOfLoops = -1
+        players[index].play()
+        if index == 0 {
+          players[index].numberOfLoops = -1
+        }
       }
     }
   }
 
   func toggleSoundPreference() {
-    if let player = player,
-      let isSoundEnabled = isSoundEnabled{
+    if let isSoundEnabled = isSoundEnabled {
       self.isSoundEnabled = !isSoundEnabled
-      if self.isSoundEnabled! {
-        player.play()
-      } else {
-        player.stop()
+      for player in players {
+        if self.isSoundEnabled! {
+          player.play()
+        } else {
+          player.stop()
+        }
       }
     }
   }

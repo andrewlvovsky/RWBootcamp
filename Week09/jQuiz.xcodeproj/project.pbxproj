@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43F6544E24CF7D8D00C8F972 /* rightanswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 43F6544C24CF7D8C00C8F972 /* rightanswer.mp3 */; };
+		43F6544F24CF7D8D00C8F972 /* wronganswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 43F6544D24CF7D8D00C8F972 /* wronganswer.mp3 */; };
 		C3DF5B7724C2549400F6D3EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5B7624C2549400F6D3EC /* AppDelegate.swift */; };
 		C3DF5B7924C2549400F6D3EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5B7824C2549400F6D3EC /* SceneDelegate.swift */; };
 		C3DF5B7B24C2549400F6D3EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5B7A24C2549400F6D3EC /* ViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43F6544C24CF7D8C00C8F972 /* rightanswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rightanswer.mp3; sourceTree = "<group>"; };
+		43F6544D24CF7D8D00C8F972 /* wronganswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wronganswer.mp3; sourceTree = "<group>"; };
 		C3DF5B7324C2549400F6D3EC /* jQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DF5B7624C2549400F6D3EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3DF5B7824C2549400F6D3EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 			children = (
 				C3DF5B8224C2549A00F6D3EC /* Assets.xcassets */,
 				C3DF5BAA24C256CF00F6D3EC /* Jeopardy-theme-song.mp3 */,
+				43F6544C24CF7D8C00C8F972 /* rightanswer.mp3 */,
+				43F6544D24CF7D8D00C8F972 /* wronganswer.mp3 */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -237,9 +243,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F6544E24CF7D8D00C8F972 /* rightanswer.mp3 in Resources */,
 				C3DF5B8624C2549A00F6D3EC /* LaunchScreen.storyboard in Resources */,
 				C3DF5B8324C2549A00F6D3EC /* Assets.xcassets in Resources */,
 				C3DF5B7E24C2549400F6D3EC /* Main.storyboard in Resources */,
+				43F6544F24CF7D8D00C8F972 /* wronganswer.mp3 in Resources */,
 				C3DF5BAB24C256CF00F6D3EC /* Jeopardy-theme-song.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

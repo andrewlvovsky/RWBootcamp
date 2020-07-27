@@ -22,6 +22,10 @@ class ViewController: UIViewController {
   var points: Int = 0
   var randomNumber: Int = 0
 
+  let jeopardyThemeURL = Bundle.main.url(forResource: "Jeopardy-theme-song", withExtension: "mp3")
+  let rightAnswerURL = Bundle.main.url(forResource: "rightanswer", withExtension: "mp3")
+  let wrongAnswerURL = Bundle.main.url(forResource: "wronganswer", withExtension: "mp3")
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
@@ -48,7 +52,7 @@ class ViewController: UIViewController {
       soundButton.setImage(UIImage(systemName: "speaker"), for: .normal)
     }
 
-    SoundManager.shared.playSound()
+    SoundManager.shared.playSound(of: jeopardyThemeURL!, on: 0)
   }
 
   func setUpView() {
@@ -106,7 +110,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
       return
     }
     if clues[indexPath.row].id == correctAnswer.id {
+      SoundManager.shared.playSound(of: rightAnswerURL!, on: 1)
       points += clues[indexPath.row].value ?? 0
+    } else {
+      SoundManager.shared.playSound(of: wrongAnswerURL!, on: 2)
     }
     getClues()
   }
