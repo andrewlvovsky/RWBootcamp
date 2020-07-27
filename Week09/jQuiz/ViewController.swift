@@ -38,6 +38,10 @@ class ViewController: UIViewController {
 
     getClues()
 
+    if SoundManager.shared.isSoundEnabled == nil {
+      SoundManager.shared.isSoundEnabled = true
+    }
+
     if SoundManager.shared.isSoundEnabled == false {
       soundButton.setImage(UIImage(systemName: "speaker.slash"), for: .normal)
     } else {
