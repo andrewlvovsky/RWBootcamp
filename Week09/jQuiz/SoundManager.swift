@@ -55,12 +55,11 @@ class SoundManager: NSObject {
   func toggleSoundPreference() {
     if let isSoundEnabled = isSoundEnabled {
       self.isSoundEnabled = !isSoundEnabled
-      for player in players {
-        if self.isSoundEnabled! {
-          player.play()
-        } else {
-          player.stop()
-        }
+      let mainPlayer = players[0]
+      if self.isSoundEnabled! {
+        mainPlayer.play()
+      } else {
+        mainPlayer.stop()
       }
     }
   }
