@@ -8,24 +8,25 @@
 
 import Foundation
 
-struct Clue {
+struct Clue: Decodable {
   var id: Int
   var answer: String
   var question: String
   var value: Int
-  var airdate: Date
-  var createdAt: Date
-  var updatedAt: Date
-  var categoryID: Int
-  var gameID: Int?
-  var invalidCount: Int?
+  var airdate: String
+  var created_at: String
+  var updated_at: String
+  var category_id: Int
+  var game_id: Int?
+  var invalid_count: Int?
   var category: Category
+//  let dict: [Dictionary<String, Any>]
 }
 
-struct Category {
+struct Category: Decodable {
   var id: Int
   var title: String
-  var createdAt: Date
-  var updatedAt: Date
-  var cluesCount: Int
+  var created_at: String
+  var updated_at: String
+  var clues_count: Int
 }
