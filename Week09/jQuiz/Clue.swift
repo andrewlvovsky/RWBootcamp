@@ -12,11 +12,11 @@ struct Clue: Decodable {
   var id: Int
   var answer: String
   var question: String
-  var value: Int
+  var value: Int?
   var airdate: String
   var created_at: String
   var updated_at: String
-  var category_id: Int
+  var category_id: Int?
   var game_id: Int?
   var invalid_count: Int?
   var category: Category

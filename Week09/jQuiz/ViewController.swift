@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.separatorStyle = .none
+    tableView.layer.backgroundColor = UIColor.clear.cgColor
+    tableView.backgroundColor = .clear
 
     self.scoreLabel.text = "\(self.points)"
 
@@ -35,14 +37,21 @@ class ViewController: UIViewController {
       soundButton.setImage(UIImage(systemName: "speaker"), for: .normal)
     }
 
-    SoundManager.shared.playSound()
-
     getClues()
 
+    if let imageURL = URL(string: "https://cdn1.edgedatg.com/aws/v2/abc/ABCUpdates/blog/2900129/8484c3386d4378d7c826e3f3690b481b/1600x900-Q90_8484c3386d4378d7c826e3f3690b481b.jpg"){
+      logoImageView.load(url: imageURL)
+    }
+
+    SoundManager.shared.playSound()
   }
 
   func setUpView() {
-    
+    DispatchQueue.main.async {
+      self.categoryLabel.text = self.clues.first?.category.title
+      self.clueLabel.text = self.clues.first?.question
+      self.tableView.reloadData()
+    }
   }
 
   func getClues() {
@@ -77,6 +86,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell()
+    cell.layer.backgroundColor = UIColor.clear.cgColor
+    cell.backgroundColor = .clear
+    cell.textLabel!.text = clues[indexPath.row].answer
+    cell.textLabel!.textAlignment = .center
     return cell
   }
 
