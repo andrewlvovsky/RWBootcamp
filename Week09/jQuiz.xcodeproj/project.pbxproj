@@ -42,6 +42,7 @@
 /* Begin PBXFileReference section */
 		43F6544C24CF7D8C00C8F972 /* rightanswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rightanswer.mp3; sourceTree = "<group>"; };
 		43F6544D24CF7D8D00C8F972 /* wronganswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wronganswer.mp3; sourceTree = "<group>"; };
+		43F6545024CFA5B300C8F972 /* FlyweightExample.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = FlyweightExample.playground; path = ../../../XcodeProjects/FlyweightExample.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C3DF5B7324C2549400F6D3EC /* jQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DF5B7624C2549400F6D3EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3DF5B7824C2549400F6D3EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		C3DF5B6A24C2549400F6D3EC = {
 			isa = PBXGroup;
 			children = (
+				43F6545024CFA5B300C8F972 /* FlyweightExample.playground */,
 				C3DF5B7524C2549400F6D3EC /* jQuiz */,
 				C3DF5B7424C2549400F6D3EC /* Products */,
 			);

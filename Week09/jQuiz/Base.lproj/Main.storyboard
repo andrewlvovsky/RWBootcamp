@@ -23,14 +23,6 @@
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVo-4j-EUU">
-                                <rect key="frame" x="25" y="815" width="19" height="22"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <state key="normal" image="speaker" catalog="system"/>
-                                <connections>
-                                    <action selector="didPressVolumeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gVX-pa-Evl"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pK8-df-Hfb">
                                 <rect key="frame" x="0.0" y="44" width="414" height="125"/>
                                 <constraints>
@@ -55,6 +47,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVo-4j-EUU">
+                                <rect key="frame" x="25" y="806" width="19" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" image="speaker" catalog="system"/>
+                                <connections>
+                                    <action selector="didPressVolumeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gVX-pa-Evl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -71,7 +72,7 @@
                             <constraint firstItem="HVo-4j-EUU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="ddN-sw-sml"/>
                             <constraint firstItem="RMY-cr-kf3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e2w-iP-sON"/>
                             <constraint firstItem="IW7-gs-GWY" firstAttribute="top" secondItem="RMY-cr-kf3" secondAttribute="bottom" constant="15" id="foz-Of-oYT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HVo-4j-EUU" secondAttribute="bottom" constant="25" id="gaB-QP-hsg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HVo-4j-EUU" secondAttribute="bottom" constant="13" id="gaB-QP-hsg"/>
                             <constraint firstItem="au0-8X-o1t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="heJ-v1-SYw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="au0-8X-o1t" secondAttribute="bottom" constant="15" id="yj9-Ni-LEp"/>
                         </constraints>
