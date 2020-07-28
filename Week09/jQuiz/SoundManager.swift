@@ -36,6 +36,8 @@ class SoundManager: NSObject {
   }
 
   func playSound(of url: URL, on index: Int) {
+    guard index < players.count else { return }
+
     do {
       players[index] = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
     } catch let error {

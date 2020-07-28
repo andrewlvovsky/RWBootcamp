@@ -25,7 +25,7 @@ class Networking {
       }
       do {
         let result = try JSONDecoder().decode(Array<Clue>.self, from: data)
-        completion(result.first?.category_id ?? nil)
+        completion(result.first?.categoryID ?? nil)
       } catch {
         print("Unable to decode: \(error)")
       }
