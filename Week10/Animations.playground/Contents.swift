@@ -9,9 +9,13 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 //: **Step 1**: Implement this new `UIView` function:
 extension UIView {
   static func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void, group: DispatchGroup, completion: ((Bool) -> Void)?) {
-    
-  // TODO: Fill in this implementation
-  
+    group.enter()
+    animate(withDuration: duration, animations: animations) { isDone in
+      defer { group.leave() }
+      DispatchQueue.main.async {
+        completion!(isDone)
+      }
+    }
   }
 }
 //: ## Setup
@@ -31,18 +35,26 @@ PlaygroundPage.current.liveView = view
 //: **Step 2**: Rewrite the following animation to be notified when all sub-animations complete:
 UIView.animate(withDuration: 1, animations: {
   // Move box to lower right corner
+  print("STARTING: Move box to lower right corner")
   box.center = CGPoint(x: 150, y: 150)
-  }, completion: {
-    _ in
-    UIView.animate(withDuration: 2, animations: {
-      // Rotate box 45 degrees
-      box.transform = CGAffineTransform(rotationAngle: .pi/4)
-      }, completion: .none)
+}, group: animationGroup, completion: {
+  _ in
+  print("FINISHED: Move box to lower right corner")
+  UIView.animate(withDuration: 2, animations: {
+    // Rotate box 45 degrees
+    print("STARTING: Rotating box")
+    box.transform = CGAffineTransform(rotationAngle: .pi/4)
+  }, group: animationGroup, completion: { _ in
+    print("FINISHED: Rotating box")
+  })
 })
 
-UIView.animate(withDuration: 4, animations: { () -> Void in
+UIView.animate(withDuration: 4, animations: {
   // Change background color to blue
+  print("STARTING: Change background color to blue")
   view.backgroundColor = UIColor.blue
+}, group: animationGroup, completion: { _ in
+  print("FINISHED: Change background color to blue")
 })
 
 // This should only print once all the animations are complete
