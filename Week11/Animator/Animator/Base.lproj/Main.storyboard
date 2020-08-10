@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -25,6 +25,23 @@
                                 <state key="normal" image="arrow.uturn.right.circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
                                 </state>
+                                <connections>
+                                    <action selector="rotateAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DgA-cI-ELP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crn-Ag-N6b" userLabel="Round">
+                                <rect key="frame" x="124" y="650" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nym-G5-242"/>
+                                    <constraint firstAttribute="width" constant="50" id="rga-o1-Jy9"/>
+                                </constraints>
+                                <state key="normal" image="circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="roundEdgeAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wfs-HN-Wu9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-pB-kom" userLabel="Scale">
                                 <rect key="frame" x="182" y="592" width="50" height="50"/>
@@ -36,6 +53,9 @@
                                 <state key="normal" image="chevron.up.circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
                                 </state>
+                                <connections>
+                                    <action selector="scaleUpAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nFw-5j-Owz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dop-Yi-daa" userLabel="Play">
                                 <rect key="frame" x="182" y="708" width="50" height="50"/>
@@ -47,6 +67,9 @@
                                 <state key="normal" image="play.circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
                                 </state>
+                                <connections>
+                                    <action selector="playAnimations:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dt2-Xh-0zI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJS-86-2l6" userLabel="Menu">
                                 <rect key="frame" x="182" y="650" width="50" height="50"/>
@@ -62,24 +85,27 @@
                                     <action selector="toggleMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9r1-7b-xBB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crn-Ag-N6b" userLabel="Round">
-                                <rect key="frame" x="124" y="650" width="50" height="50"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="nym-G5-242"/>
-                                    <constraint firstAttribute="width" constant="50" id="rga-o1-Jy9"/>
-                                </constraints>
-                                <state key="normal" image="circle" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
-                                </state>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vt4-ag-LNQ">
+                                <rect key="frame" x="170" y="90" width="74" height="75"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="faceid" catalog="system" id="WOz-dX-TWT">
+                                        <rect key="frame" x="9" y="12" width="56" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OJS-86-2l6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5hF-G1-YCp"/>
+                            <constraint firstAttribute="bottom" secondItem="Vt4-ag-LNQ" secondAttribute="bottom" constant="731" id="7XD-Vk-xjL"/>
                             <constraint firstItem="p0s-py-gL8" firstAttribute="bottom" secondItem="OJS-86-2l6" secondAttribute="bottom" id="8Ss-46-baF"/>
+                            <constraint firstItem="Vt4-ag-LNQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8g3-wJ-3Ci"/>
                             <constraint firstItem="dop-Yi-daa" firstAttribute="leading" secondItem="OJS-86-2l6" secondAttribute="leading" id="CuR-BP-XcR"/>
                             <constraint firstItem="bhr-pB-kom" firstAttribute="leading" secondItem="OJS-86-2l6" secondAttribute="leading" id="Evt-oa-Lnd"/>
+                            <constraint firstItem="Vt4-ag-LNQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="170" id="MJL-JB-Xpf"/>
                             <constraint firstItem="p0s-py-gL8" firstAttribute="top" secondItem="OJS-86-2l6" secondAttribute="top" id="NhD-et-XtP"/>
                             <constraint firstItem="p0s-py-gL8" firstAttribute="leading" secondItem="OJS-86-2l6" secondAttribute="trailing" constant="8" id="RA2-FI-4J1"/>
                             <constraint firstItem="OJS-86-2l6" firstAttribute="top" secondItem="bhr-pB-kom" secondAttribute="bottom" constant="8" id="XFP-1y-0Ft"/>
@@ -88,10 +114,12 @@
                             <constraint firstItem="Crn-Ag-N6b" firstAttribute="bottom" secondItem="OJS-86-2l6" secondAttribute="bottom" id="mck-ea-HzP"/>
                             <constraint firstItem="dop-Yi-daa" firstAttribute="top" secondItem="OJS-86-2l6" secondAttribute="bottom" constant="8" id="uIO-0S-qxw"/>
                             <constraint firstItem="OJS-86-2l6" firstAttribute="top" secondItem="Crn-Ag-N6b" secondAttribute="top" id="xPp-46-fjo"/>
+                            <constraint firstItem="Vt4-ag-LNQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="yQj-mh-Nd7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="animationObject" destination="Vt4-ag-LNQ" id="cQp-dt-tzB"/>
                         <outlet property="menuButton" destination="OJS-86-2l6" id="eWG-ds-UHZ"/>
                         <outlet property="playButton" destination="dop-Yi-daa" id="K98-UQ-etX"/>
                         <outlet property="playConstraint" destination="uIO-0S-qxw" id="M82-0L-T9e"/>
@@ -113,6 +141,7 @@
         <image name="chevron.up.circle" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
+        <image name="faceid" catalog="system" width="128" height="114"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>
