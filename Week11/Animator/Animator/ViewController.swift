@@ -16,6 +16,9 @@ class ViewController: UIViewController {
   @IBOutlet weak var scaleUpButton: UIButton!
   @IBOutlet weak var rotateRightButton: UIButton!
 
+  @IBOutlet weak var bannerLabel: UILabel!
+  @IBOutlet weak var topBannerConstraint: NSLayoutConstraint!
+
   @IBOutlet weak var animationObject: UIView!
 
   @IBOutlet weak var roundConstraint: NSLayoutConstraint!
@@ -27,8 +30,12 @@ class ViewController: UIViewController {
   var menuToggled = true
   var currentScale: CGFloat = 1
   var currentAngle: CGFloat = .pi
-  var animationDuration = 0
   let animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut)
+
+//  override func viewWillAppear(_ animated: Bool) {
+//    super.viewWillAppear(animated)
+//
+//  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,6 +48,7 @@ class ViewController: UIViewController {
     scaleUpButton.layer.cornerRadius = scaleUpButton.intrinsicContentSize.width / 2
     rotateRightButton.layer.cornerRadius = rotateRightButton.intrinsicContentSize.width / 2
 
+    topBannerConstraint.constant = -100
     toggleMenu(self)
 
     // Brings main menu button to the front of all the other views in the scene
@@ -74,6 +82,7 @@ class ViewController: UIViewController {
       self.view.layoutIfNeeded()
     }, delayFactor: 1)
     print("Scale animation added to queue")
+    showNotification(for: "Scale")
   }
 
   @IBAction func roundEdgeAnimation(_ sender: Any) {
@@ -82,6 +91,7 @@ class ViewController: UIViewController {
       self.view.layoutIfNeeded()
     }, delayFactor: 1)
     print("Round animation added to queue")
+    showNotification(for: "Round")
   }
 
   @IBAction func rotateAnimation(_ sender: Any) {
@@ -93,6 +103,7 @@ class ViewController: UIViewController {
       self.view.layoutIfNeeded()
     }, delayFactor: 1)
     print("Rotate animation added to queue")
+    showNotification(for: "Rotate")
   }
 
   @IBAction func playAnimations(_ sender: Any) {
@@ -102,6 +113,27 @@ class ViewController: UIViewController {
     }
     animator.addCompletion { _ in self.menuButton.isEnabled = true}
     animator.startAnimation()
+  }
+
+  func showNotification(for animationType: String) {
+    bannerLabel.text = ("\(animationType) animation successfully added!")
+    UIView.animate(
+      withDuration: 0.25,
+      delay: 0,
+      options: [.curveEaseInOut],
+      animations: {
+        self.topBannerConstraint.constant = 0
+        self.view.layoutIfNeeded()
+    }) { _ in
+      UIView.animate(
+        withDuration: 1,
+        delay: 1,
+        options: [.curveEaseInOut],
+        animations: {
+          self.topBannerConstraint.constant = -100
+          self.view.layoutIfNeeded()
+      })
+    }
   }
 }
 
