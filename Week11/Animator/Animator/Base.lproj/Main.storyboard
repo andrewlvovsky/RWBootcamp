@@ -15,89 +15,97 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJS-86-2l6" userLabel="Menu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0s-py-gL8" userLabel="Rotate">
+                                <rect key="frame" x="240" y="650" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4Fc-l5-uMb"/>
+                                    <constraint firstAttribute="width" constant="50" id="wHP-if-V1l"/>
+                                </constraints>
+                                <state key="normal" image="arrow.uturn.right.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-pB-kom" userLabel="Scale">
+                                <rect key="frame" x="182" y="592" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="B62-58-HzC"/>
+                                    <constraint firstAttribute="width" constant="50" id="cc2-fQ-kJ6"/>
+                                </constraints>
+                                <state key="normal" image="chevron.up.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dop-Yi-daa" userLabel="Play">
+                                <rect key="frame" x="182" y="708" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6oH-qx-Rll"/>
+                                    <constraint firstAttribute="height" constant="50" id="hyT-qN-s3c"/>
+                                </constraints>
+                                <state key="normal" image="play.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJS-86-2l6" userLabel="Menu">
                                 <rect key="frame" x="182" y="650" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="PQd-3c-gYs"/>
+                                    <constraint firstAttribute="height" constant="50" id="dVF-gt-2ro"/>
+                                </constraints>
                                 <state key="normal" image="ellipsis.circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="toggleMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9r1-7b-xBB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crn-Ag-N6b" userLabel="Round">
-                                <rect key="frame" x="107" y="650" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crn-Ag-N6b" userLabel="Round">
+                                <rect key="frame" x="124" y="650" width="50" height="50"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nym-G5-242"/>
+                                    <constraint firstAttribute="width" constant="50" id="rga-o1-Jy9"/>
+                                </constraints>
                                 <state key="normal" image="circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0s-py-gL8" userLabel="Rotate">
-                                <rect key="frame" x="257" y="650" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="arrow.uturn.right.circle" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dop-Yi-daa" userLabel="Play">
-                                <rect key="frame" x="182" y="725" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="play.circle" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-pB-kom" userLabel="Scale">
-                                <rect key="frame" x="182" y="575" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="chevron.up.circle" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="OJS-86-2l6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5hF-G1-YCp"/>
+                            <constraint firstItem="p0s-py-gL8" firstAttribute="bottom" secondItem="OJS-86-2l6" secondAttribute="bottom" id="8Ss-46-baF"/>
+                            <constraint firstItem="dop-Yi-daa" firstAttribute="leading" secondItem="OJS-86-2l6" secondAttribute="leading" id="CuR-BP-XcR"/>
+                            <constraint firstItem="bhr-pB-kom" firstAttribute="leading" secondItem="OJS-86-2l6" secondAttribute="leading" id="Evt-oa-Lnd"/>
+                            <constraint firstItem="p0s-py-gL8" firstAttribute="top" secondItem="OJS-86-2l6" secondAttribute="top" id="NhD-et-XtP"/>
+                            <constraint firstItem="p0s-py-gL8" firstAttribute="leading" secondItem="OJS-86-2l6" secondAttribute="trailing" constant="8" id="RA2-FI-4J1"/>
+                            <constraint firstItem="OJS-86-2l6" firstAttribute="top" secondItem="bhr-pB-kom" secondAttribute="bottom" constant="8" id="XFP-1y-0Ft"/>
+                            <constraint firstAttribute="bottom" secondItem="OJS-86-2l6" secondAttribute="bottom" constant="196" id="aqq-SM-RKw"/>
+                            <constraint firstItem="OJS-86-2l6" firstAttribute="leading" secondItem="Crn-Ag-N6b" secondAttribute="trailing" constant="8" id="efk-EQ-Nk6"/>
+                            <constraint firstItem="Crn-Ag-N6b" firstAttribute="bottom" secondItem="OJS-86-2l6" secondAttribute="bottom" id="mck-ea-HzP"/>
+                            <constraint firstItem="dop-Yi-daa" firstAttribute="top" secondItem="OJS-86-2l6" secondAttribute="bottom" constant="8" id="uIO-0S-qxw"/>
+                            <constraint firstItem="OJS-86-2l6" firstAttribute="top" secondItem="Crn-Ag-N6b" secondAttribute="top" id="xPp-46-fjo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="menuButton" destination="OJS-86-2l6" id="eWG-ds-UHZ"/>
                         <outlet property="playButton" destination="dop-Yi-daa" id="K98-UQ-etX"/>
+                        <outlet property="playConstraint" destination="uIO-0S-qxw" id="M82-0L-T9e"/>
+                        <outlet property="rotateConstraint" destination="RA2-FI-4J1" id="306-Ig-EBH"/>
                         <outlet property="rotateRightButton" destination="p0s-py-gL8" id="57s-my-lxv"/>
                         <outlet property="roundButton" destination="Crn-Ag-N6b" id="xz2-hB-eAy"/>
+                        <outlet property="roundConstraint" destination="efk-EQ-Nk6" id="Vbx-f1-TPi"/>
+                        <outlet property="scaleConstraint" destination="XFP-1y-0Ft" id="drI-Kn-Uys"/>
                         <outlet property="scaleUpButton" destination="bhr-pB-kom" id="c43-z6-7b7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="139"/>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
     <resources>
